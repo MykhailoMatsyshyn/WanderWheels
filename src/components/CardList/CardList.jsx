@@ -12,6 +12,7 @@ import { incrementPage, setPage } from "../../redux/campers/slice";
 import CamperItem from "../CamperItem/CamperItem";
 import css from "./CardList.module.css";
 import { fetchCampersPage } from "../../redux/campers/operations";
+import Button from "../Button/Button";
 
 export default function CardList() {
   const dispatch = useDispatch();
@@ -46,7 +47,9 @@ export default function CardList() {
         ))}
       </ul>
       {moreToLoad && !isLoading && (
-        <button onClick={handleLoadMore}>Load More</button>
+        <Button background={false} onClick={handleLoadMore}>
+          Load More
+        </Button>
       )}
     </div>
   );
