@@ -1,10 +1,10 @@
 @import url("./assets/styles/reset.css");
 @import url("./assets/styles/variables.css");
-/* 
+
 body {
-  font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.29;
-  font-size: 14px;
+  font-family: Inter, sans-serif;
+  line-height: 24px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.01em;
 
@@ -16,4 +16,4 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
