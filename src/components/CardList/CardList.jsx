@@ -1,5 +1,53 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import {
+  selectCampers,
+  selectError,
+  selectLoading,
+  selectCurrentPage,
+  selectPerPage,
+  selectMoreToLoad,
+} from "../../redux/campers/selectors";
+import { incrementPage, setPage } from "../../redux/campers/slice";
 import CamperItem from "../CamperItem/CamperItem";
+import css from "./CardList.module.css";
+import { fetchCampersPage } from "../../redux/campers/operations";
 
 export default function CardList() {
-  return <>CardList</>;
+  const dispatch = useDispatch();
+
+  // const [visibleCampers, setVisibleCampers] = useState(4);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const campers = useSelector(selectCampers);
+  const currentPage = useSelector(selectCurrentPage);
+  const perPage = useSelector(selectPerPage);
+  const moreToLoad = useSelector(selectMoreToLoad);
+  const isLoading = useSelector(selectLoading);
+  const isError = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchCampersPage({ page: 1, limit: perPage }));
+    dispatch(setPage(2));
+  }, []);
+
+  const handleLoadMore = () => {
+    dispatch(fetchCampersPage({ page: currentPage, limit: perPage }));
+    dispatch(incrementPage());
+  };
+
+  return (
+    <div>
+      <ul>
+        {campers.map((camper) => (
+          <li key={camper._id}>
+            <CamperItem data={camper} />
+          </li>
+        ))}
+      </ul>
+      {moreToLoad && !isLoading && (
+        <button onClick={handleLoadMore}>Load More</button>
+      )}
+    </div>
+  );
 }

@@ -1,4 +1,7 @@
-export const selectCampers = (state) => state.campers;
-export const selectFavoriteCampers = (state) => state.favoriteCampers;
-export const selectLoading = (state) => state.isLoading;
-export const selectError = (state) => state.isError;
+export const selectCampers = (state) => state.favorite.campers;
+export const selectFavoriteCampers = (state) => state.favorite.favoriteCampers;
+export const selectLoading = (state) => state.favorite.isLoading;
+export const selectError = (state) => state.favorite.isError;
+export const selectCurrentPage = (state) => state.favorite.currentPage;
+export const selectPerPage = (state) => state.favorite.perPage;
+export const selectMoreToLoad = (state) => state.favorite.moreToLoad;

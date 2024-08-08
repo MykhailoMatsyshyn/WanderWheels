@@ -32,14 +32,21 @@ const campersSlice = createSlice({
     addToFavorite(state, action) {
       const camperId = action.payload;
       state.favoriteCampers.push(camperId);
-      updateFavorites(state.favoriteCampers);
     },
     deleteFromFavorite(state, action) {
       const camperId = action.payload;
-      state.favoriteCampers = state.favoriteCampers.filter(
-        (id) => id !== camperId
+      console.log(state.favoriteCampers);
+
+      // state.favoriteCampers = state.favoriteCampers.filter(
+      //   (id) => id !== camperId
+      // );
+
+      const index = state.favoriteCampers.findIndex(
+        (сamper) => сamper._id === camperId
       );
-      updateFavorites(state.favoriteCampers);
+      state.favoriteCampers.splice(index, 1);
+
+      console.log(index);
     },
   },
   extraReducers: (builder) => {
@@ -52,16 +59,16 @@ const campersSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
 
-        // const ids = state.campers.map((camper) => camper._id);
+        const ids = state.campers.map((camper) => camper._id);
 
-        // state.campers = [
-        //   ...state.campers,
-        //   ...action.payload.filter((camper) => !ids.includes(camper._id)),
-        // ];
+        state.campers = [
+          ...state.campers,
+          ...action.payload.filter((camper) => !ids.includes(camper._id)),
+        ];
 
-        // if (action.payload.length < state.perPage) {
-        //   state.moreToLoad = false;
-        // }
+        if (action.payload.length < state.perPage) {
+          state.moreToLoad = false;
+        }
       })
       .addCase(fetchCampersPage.rejected, (state) => {
         state.isLoading = false;
@@ -71,5 +78,6 @@ const campersSlice = createSlice({
   },
 });
 
-export const { deleteFromFavorite, addToFavorite } = campersSlice.actions;
+export const { deleteFromFavorite, addToFavorite, incrementPage, setPage } =
+  campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
