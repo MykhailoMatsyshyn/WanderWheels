@@ -70,3 +70,6 @@ const campersSlice = createSlice({
       });
   },
 });
+
+export const { deleteFromFavorite, addToFavorite } = campersSlice.actions;
+export const campersReducer = campersSlice.reducer;
