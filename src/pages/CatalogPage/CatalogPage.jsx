@@ -1,10 +1,11 @@
 import CardList from "../../components/CardList/CardList";
-import Filter from "../../components/Filter/Filter";
+// import Filter from "../../components/Filter/Filter";
 
 export default function CatalogPage() {
   return (
     <>
-      <Filter />
+      catalog
+      {/* <Filter /> */}
       <CardList />
     </>
   );
