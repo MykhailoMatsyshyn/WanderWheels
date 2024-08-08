@@ -1,0 +1,26 @@
+.baseStyle {
+  width: 173px;
+  height: 56px;
+  padding: 10px 16px;
+  border-radius: 200px;
+  text-align: center;
+  font-weight: 500;
+  background-color: var(--color-accent);
+}
+
+.baseStyle:hover,
+.baseStyle:focus {
+  background-color: var(--color-hover-button);
+}
+
+.border {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: var(--border-button);
+}
+
+.border:hover,
+.border:focus {
+  background-color: transparent;
+  border: var(--border-hover-button);
+}
