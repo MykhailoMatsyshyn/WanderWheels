@@ -1,3 +1,11 @@
 .header {
-  /* position: absolute; */
+  position: absolute;
+  display: flex;
+  width: 1312px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
 }

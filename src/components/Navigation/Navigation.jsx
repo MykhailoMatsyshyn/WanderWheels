@@ -8,18 +8,16 @@ const buildLinkClass = ({ isActive }) => {
 
 export default function Navigation() {
   return (
-    <>
-      <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/catalog" className={buildLinkClass}>
-          Catalog
-        </NavLink>
-        <NavLink to="/favourites" className={buildLinkClass}>
-          Favourites
-        </NavLink>
-      </nav>
-    </>
+    <nav className={css.nav}>
+      <NavLink to="/" className={buildLinkClass}>
+        Home
+      </NavLink>
+      <NavLink to="/catalog" className={buildLinkClass}>
+        Catalog
+      </NavLink>
+      <NavLink to="/favourites" className={buildLinkClass}>
+        Favourites
+      </NavLink>
+    </nav>
   );
 }

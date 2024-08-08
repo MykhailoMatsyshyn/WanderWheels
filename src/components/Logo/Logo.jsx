@@ -2,7 +2,7 @@ import css from "./Logo.module.css";
 
 export default function Logo() {
   return (
-    <>
+    <div className={css.position}>
       <img
         src="../../../public/logo.svg"
         alt="Wander Wheels Logo Icon"
@@ -11,6 +11,6 @@ export default function Logo() {
         height="32"
       />
       <p>Wander Wheels</p>
-    </>
+    </div>
   );
 }
