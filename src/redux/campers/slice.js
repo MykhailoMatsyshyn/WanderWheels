@@ -3,13 +3,12 @@ import { fetchCampersPage } from "./operations";
 
 export const initialStateCampers = {
   campers: [],
+  favoriteCampers: [],
   perPage: 4,
   currentPage: 1,
-  //   filters: {},
-  favoriteCampers: [],
+  moreToLoad: true,
   isLoading: false,
   isError: false,
-  moreToLoad: true,
 };
 
 const campersSlice = createSlice({
@@ -37,10 +36,6 @@ const campersSlice = createSlice({
       const camperId = action.payload;
       console.log(state.favoriteCampers);
 
-      // state.favoriteCampers = state.favoriteCampers.filter(
-      //   (id) => id !== camperId
-      // );
-
       const index = state.favoriteCampers.findIndex(
         (сamper) => сamper._id === camperId
       );
@@ -53,7 +48,6 @@ const campersSlice = createSlice({
     builder
       .addCase(fetchCampersPage.pending, (state) => {
         state.isLoading = true;
-        state.moreToLoad = true;
       })
       .addCase(fetchCampersPage.fulfilled, (state, action) => {
         state.isLoading = false;

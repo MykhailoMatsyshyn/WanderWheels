@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { selectFavoriteCampers } from "../../redux/campers/selectors";
 import CamperList from "../../components/CamperList/CamperList";
 import css from "./FavouritesPage.module.css";
+import Button from "../../components/Button/Button";
 
 export default function FavouritesPage() {
   const campers = useSelector(selectFavoriteCampers);
@@ -17,13 +18,13 @@ export default function FavouritesPage() {
           <h2>
             The open road is calling, but your favorites list needs a boost!
           </h2>
-          <button
+          <Button
             onClick={() => {
               navigate("/catalog");
             }}
           >
             Find Your Wheels
-          </button>
+          </Button>
         </div>
       )}
     </div>

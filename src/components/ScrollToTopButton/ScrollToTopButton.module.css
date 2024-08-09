@@ -1,0 +1,83 @@
+.progressWrap {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  height: 76px;
+  width: 76px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 200ms linear;
+}
+
+.progressWrap.activeProgress {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.progressWrap::after {
+  position: absolute;
+  content: "↑";
+  text-align: center;
+
+  line-height: 70px;
+  font-size: 40px;
+  font-family: "Times New Roman", Times, serif;
+
+  color: var(--color-accent);
+
+  left: 0;
+  top: -2px;
+
+  height: 76px;
+  width: 76px;
+
+  cursor: pointer;
+  display: block;
+  z-index: 1;
+  transition: all 200ms linear;
+}
+
+.progressWrap:hover::after {
+  opacity: 0;
+}
+
+.progressWrap:hover::before {
+  opacity: 1;
+}
+
+.progressWrap::before {
+  position: absolute;
+  content: "↑";
+  text-align: center;
+
+  line-height: 70px;
+  font-size: 40px;
+  font-family: "Times New Roman", Times, serif;
+
+  opacity: 0;
+  color: var(--color-accent);
+  left: 0;
+  top: -2px;
+
+  height: 76px;
+  width: 76px;
+
+  cursor: pointer;
+  display: block;
+  z-index: 2;
+  transition: all 200ms linear;
+}
+
+.progressCircle path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 8;
+  box-sizing: border-box;
+  transition: all 200ms linear;
+}
