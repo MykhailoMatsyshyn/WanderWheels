@@ -5,5 +5,17 @@
   font: 30px Raleway;
   flex-shrink: 0;
   letter-spacing: -1px;
-  cursor: default;
+  cursor: pointer;
+}
+
+.logoLink {
+  text-decoration: none;
+}
+
+.logoIcon {
+  transition: transform 0.3s;
+}
+
+.position:hover .logoIcon {
+  transform: scale(1.1);
 }
