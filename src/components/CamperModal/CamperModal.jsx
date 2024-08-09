@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-
-// import spritePath from "../../assets/icons/icons.svg"; //!!!!
-
+import { Icon } from "../Icon/Icon";
+import { formatLocation } from "../../utils/formatLocation";
 // import FeaturesList from "../FeaturesList/FeaturesList";
 import BookingForm from "../BookingForm/BookingForm";
-
 import VehicleDetails from "../VehicleDetails/VehicleDetails";
 import ReviewsList from "../ReviewsList/ReviewsList";
 import clsx from "clsx";
@@ -43,41 +41,26 @@ export default function CamperModal({ camper, onClose }) {
           <div className={css.top}>
             <h2 className={css.title}>{camper.name}</h2>
             <button className={css.btn} onClick={onClose}>
-              {/* <svg
-                className={css.icon}
-                width="32"
-                height="32"
-                aria-label="btn icon"
-              >
-                <use href={`${spritePath}#icon-close`} />
-              </svg> */}
+              <Icon id="icon-close" stroke="#101828" />
             </button>
           </div>
           <div className={css.details}>
             <div className={css.secondaryContainer}>
               <div className={css.ratingContainer}>
-                {/* <svg
-                  className={clsx(css.icon, css.star)}
-                  width="16"
-                  height="16"
-                  aria-label="btn icon"
-                >
-                  <use href={`${spritePath}#icon-rating`} />
-                </svg> */}
+                <Icon id="icon-rating" fill="#ffc531" width="16" height="16" />
                 <p
                   className={css.rating}
                 >{`${camper.rating}(${camper.reviews.length} Reviews)`}</p>
               </div>
               <div className={css.ratingContainer}>
-                {/* <svg
-                  className={css.icon}
+                <Icon
+                  id="icon-location"
+                  stroke="#101828"
+                  fill="none"
                   width="16"
                   height="16"
-                  aria-label="btn icon"
-                >
-                  <use href={`${spritePath}#icon-map-pin`} />
-                </svg> */}
-                <p>{camper.location}</p>
+                />
+                <p>{formatLocation(camper.location)}</p>
               </div>
             </div>
             <h3 className={css.title}>{`$${camper.price},00`}</h3>

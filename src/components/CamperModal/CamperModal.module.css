@@ -10,6 +10,7 @@
   left: 0;
   z-index: 1000;
   background-color: rgba(17, 18, 19, 0.4);
+  backdrop-filter: blur(2.5px);
 }
 
 .modal {
@@ -26,25 +27,20 @@
 
 .scrollable {
   overflow-y: auto;
-  flex: 1;
-  padding-right: 8px;
+  padding-right: 16px;
+  margin-right: -24px;
 }
 
 .btn,
 .btn:hover,
 .btn:active,
 .btn:focus {
-  color: var(--primary);
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
   background-color: transparent;
   padding: 0;
-}
-
-.icon {
-  fill: transparent;
-  stroke: var(--primary);
 }
 
 .top {
@@ -70,7 +66,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0f0f0;
+  background: var(--color-white-dark);
 }
 
 .img {
@@ -105,19 +101,14 @@
 }
 
 .description {
-  color: var(--primary-light);
+  color: var(--color-secondary);
   text-align: left;
   padding-bottom: 44px;
 }
 
 .icon {
   fill: transparent;
-  stroke: var(--primary);
-}
-
-.star {
-  fill: var(--accent-2);
-  stroke: var(--accent-2);
+  stroke: var(--color-primary);
 }
 
 .ratingContainer {
@@ -163,7 +154,7 @@
   right: 0;
   bottom: -26px;
   height: 4px;
-  background-color: var(--accent-1);
+  background-color: var(--color-accent);
 }
 
 .separator {

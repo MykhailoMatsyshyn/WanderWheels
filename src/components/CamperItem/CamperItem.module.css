@@ -49,6 +49,11 @@
 
 .iconCont {
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.iconCont:hover {
+  transform: scale(1.2);
 }
 
 .iconHeart {
@@ -59,10 +64,6 @@
 .iconFavorite {
   fill: var(--color-accent);
   stroke: none;
-}
-
-.iconCont:hover {
-  cursor: pointer;
 }
 
 .secondSec {

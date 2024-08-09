@@ -17,6 +17,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar {
+body:not(.modalOpen)::-webkit-scrollbar {
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 7px;
+  height: 264px;
 }

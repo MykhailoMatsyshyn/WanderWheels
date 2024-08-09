@@ -7,6 +7,7 @@ import css from "./CamperItem.module.css";
 import Button from "../Button/Button";
 import { useState } from "react";
 import CamperModal from "../CamperModal/CamperModal";
+import { formatLocation } from "../../utils/formatLocation";
 
 export default function CamperItem({ data }) {
   const {
@@ -24,8 +25,7 @@ export default function CamperItem({ data }) {
     reviews = [],
   } = data;
 
-  const [country, city] = location.split(", ");
-  const formattedLocation = `${city}, ${country}`;
+  const formattedLocation = formatLocation(location);
 
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,7 +61,7 @@ export default function CamperItem({ data }) {
             <div className={css.iconCont}>
               <svg width={24} height={24} onClick={handleFavoriteClick}>
                 <use
-                  className={`${css.iconHeart} ${
+                  className={`${css.heart} ${css.iconHeart} ${
                     isFavorite ? css.iconFavorite : ""
                   }`}
                   xlinkHref={`${sprite}#icon-heart`}
