@@ -5,8 +5,10 @@ import { Icon } from "../Icon/Icon";
 import sprite from "../../assets/images/icons/sprite.svg";
 import css from "./CamperItem.module.css";
 import Button from "../Button/Button";
+import { useState } from "react";
+import CamperModal from "../CamperModal/CamperModal";
 
-export default function CamperItem({ data, onShowMore }) {
+export default function CamperItem({ data }) {
   const {
     _id,
     gallery = [],
@@ -24,9 +26,18 @@ export default function CamperItem({ data, onShowMore }) {
 
   const [country, city] = location.split(", ");
   const formattedLocation = `${city}, ${country}`;
-  console.log(formattedLocation);
 
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleShowMore = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const favoriteCampers = useSelector(selectFavoriteCampers);
 
   const isFavorite = favoriteCampers.some((camper) => camper._id === _id);
@@ -46,7 +57,7 @@ export default function CamperItem({ data, onShowMore }) {
         <div className={css.firstSec}>
           <p>{name}</p>
           <div className={css.favCont}>
-            <p>&#8364;{price}.00</p>
+            <p>&#8364;{price},00</p>
             <div className={css.iconCont}>
               <svg width={24} height={24} onClick={handleFavoriteClick}>
                 <use
@@ -124,12 +135,9 @@ export default function CamperItem({ data, onShowMore }) {
             )}
           </ul>
         </div>
-
-        {/* <button className={css.button} onClick={onShowMore}>
-          Show more
-        </button> */}
-        <Button> Show more</Button>
+        <Button onClick={handleShowMore}>Show more</Button>
       </div>
+      {isModalOpen && <CamperModal camper={data} onClose={handleCloseModal} />}
     </div>
   );
 }
