@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import { useState } from "react";
 import CamperModal from "../CamperModal/CamperModal";
 import { formatLocation } from "../../utils/formatLocation";
+import FeaturesList from "../FeaturesList/FeaturesList";
 
 export default function CamperItem({ data }) {
   const {
@@ -18,9 +19,6 @@ export default function CamperItem({ data }) {
     rating = "No rating",
     location = "No location",
     description = "No description available",
-    adults,
-    transmission,
-    engine,
     details = {},
     reviews = [],
   } = data;
@@ -98,44 +96,11 @@ export default function CamperItem({ data }) {
         <p className={css.description}>{description}</p>
 
         <div className={css.featuresCont}>
-          <ul className={css.featuresList}>
-            <li className={css.feature}>
-              <Icon width="20" height="20" id="icon-adults" />
-              <p>{adults} adults</p>
-            </li>
-            <li className={css.feature}>
-              <Icon width="20" height="20" id="icon-automatic" />
-              <p className={css.text}>{transmission}</p>
-            </li>
-            <li className={css.feature}>
-              <Icon width="20" height="20" id="icon-petrol" />
-              <p className={css.text}>{engine}</p>
-            </li>
-            {details.kitchen && (
-              <li className={css.feature}>
-                <Icon width="20" height="20" id="icon-kitchen" />
-                <p>Kitchen</p>
-              </li>
-            )}
-            <li className={css.feature}>
-              <Icon
-                width="20"
-                height="20"
-                id="icon-beds"
-                fill="none"
-                stroke="#101828"
-              />
-              <p>{details.beds} beds</p>
-            </li>
-            {details.airConditioner && (
-              <li className={css.feature}>
-                <Icon width="20" height="20" id="icon-ac" />
-                <p>AC</p>
-              </li>
-            )}
-          </ul>
+          <FeaturesList camper={data} id="CamperItem" height={96} />
         </div>
-        <Button onClick={handleShowMore}>Show more</Button>
+        <Button onClick={handleShowMore} className={css.showMoreBtn}>
+          Show more
+        </Button>
       </div>
       {isModalOpen && <CamperModal camper={data} onClose={handleCloseModal} />}
     </div>

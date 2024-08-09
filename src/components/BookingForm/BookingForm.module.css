@@ -1,6 +1,5 @@
 .form {
   width: 448px;
-  height: 100%;
   padding: 24px;
   gap: 24px;
   border-radius: 10px;
@@ -18,18 +17,18 @@
   border-radius: 10px;
   outline: none;
   border: none;
-  background-color: var(--secondary-light);
+  background-color: var(--color-white-light);
   margin-bottom: 4px;
-  color: var(--primary);
+  color: var(--color-primary);
 }
 .input::placeholder {
-  color: var(--primary-light);
+  color: var(--color-secondary);
 }
 
 .input:active::placeholder,
 .input:focus::placeholder,
 .input:hover::placeholder {
-  color: var(--primary);
+  color: var(--color-primary);
 }
 
 .textarea {
@@ -55,12 +54,14 @@
   font-weight: 400;
   line-height: 24px;
   text-align: left;
-  color: var(--primary-light);
+  color: var(--color-secondary);
 }
 
 .error {
   font-size: 16px;
   line-height: 1.4;
+  color: var(--color-accent);
+  padding-left: 18px;
 }
 
 .inputs {
@@ -71,12 +72,4 @@
 
 .btn {
   padding: 16px 60px;
-}
-
-@media screen and (max-width: 768px) {
-  .form {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }

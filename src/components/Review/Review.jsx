@@ -1,5 +1,5 @@
 import css from "./Review.module.css";
-// import spritePath from "../../assets/icons/icons.svg";
+import { Icon } from "../Icon/Icon";
 import clsx from "clsx";
 
 export default function Review({ review }) {
@@ -11,23 +11,25 @@ export default function Review({ review }) {
           <div className={css.reviewHeader}>
             <h3 className={css.name}>{review.reviewer_name}</h3>
             <div className={css.rating}>
-              {/* {[...Array(5)].map((star, index) => {
-                return (
-                  <svg
-                    className={
-                      index < review.reviewer_rating
-                        ? clsx(css.icon, css.filledStar)
-                        : clsx(css.icon, css.emptyStar)
-                    }
+              {[...Array(5)].map((star, index) => {
+                return index < review.reviewer_rating ? (
+                  <Icon
+                    id="icon-rating"
                     width="16"
                     height="16"
-                    aria-label="btn icon"
-                    key={index}
-                  >
-                    <use href={`${spritePath}#icon-rating`} />
-                  </svg>
+                    fill="#ffc531"
+                    stroke="#ffc531"
+                  ></Icon>
+                ) : (
+                  <Icon
+                    id="icon-rating"
+                    width="16"
+                    height="16"
+                    fill="#f2f4f7"
+                    stroke="#f2f4f7"
+                  ></Icon>
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>

@@ -6,7 +6,6 @@ import Button from "../Button/Button";
 import { EQUIPMENT, TYPE } from "../../constants";
 import css from "./Filter.module.css";
 import { Icon } from "../Icon/Icon";
-// import sprite from "../../assets/images/icons/sprite.svg";
 
 export default function Filter() {
   const [locationSelected, setLocationSelected] = useState(false);
@@ -105,7 +104,7 @@ export default function Filter() {
                       className={css.hiddenCheckbox}
                     />
                     <span className={css.icon}>
-                      <Icon id={`icon-${filter.name}`}></Icon>
+                      <Icon {...filter.iconParams} />
                     </span>
                     {filter.label}
                   </label>

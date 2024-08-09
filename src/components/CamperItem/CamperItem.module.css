@@ -25,6 +25,7 @@
 .content {
   display: flex;
   flex-direction: column;
+  height: 310px;
 }
 
 .firstSec {
@@ -124,21 +125,6 @@
   text-transform: capitalize;
 }
 
-.button {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  border-radius: 200px;
-  width: max-content;
-  padding: 16px 40px;
-  background-color: var(--red);
-  color: var(--white);
-  border: none;
-  font-size: 16px;
-}
-
-.button:hover,
-.button:focus {
-  background-color: var(--dark-red);
+.showMoreBtn {
+  margin-top: auto;
 }

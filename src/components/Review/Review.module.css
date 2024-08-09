@@ -12,8 +12,8 @@
   justify-content: center;
   font-size: 24px;
   font-weight: bold;
-  color: var(--accent-1);
-  background-color: var(--secondary-light);
+  color: var(--color-accent);
+  background-color: var(--color-white-light);
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -38,18 +38,18 @@
 }
 
 .filledStar {
-  fill: var(--accent-2);
-  stroke: var(--accent-2);
+  fill: var(--color-highlight);
+  stroke: var(--color-highlight);
 }
 
 .emptyStar {
-  fill: var(--secondary);
-  stroke: var(--secondary);
+  fill: var(--color-white-dark);
+  stroke: var(--color-white-dark);
 }
 
 .reviewText {
   line-height: 1.4;
-  color: var(--primary-light);
+  color: var(--color-secondary);
   text-align: left;
 }
 

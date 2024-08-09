@@ -1,11 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import { Icon } from "../Icon/Icon";
 import { formatLocation } from "../../utils/formatLocation";
-// import FeaturesList from "../FeaturesList/FeaturesList";
+import FeaturesList from "../FeaturesList/FeaturesList";
 import BookingForm from "../BookingForm/BookingForm";
 import VehicleDetails from "../VehicleDetails/VehicleDetails";
 import ReviewsList from "../ReviewsList/ReviewsList";
-import clsx from "clsx";
 import css from "./CamperModal.module.css";
 
 export default function CamperModal({ camper, onClose }) {
@@ -102,7 +101,7 @@ export default function CamperModal({ camper, onClose }) {
             <div className={css.featuresContainer}>
               <div className={css.left}>
                 <div className={css.features}>
-                  {/* <FeaturesList camper={camper} /> */}
+                  <FeaturesList camper={camper} id="CamperModal" height={200} />
                 </div>
                 <VehicleDetails camper={camper} />
               </div>

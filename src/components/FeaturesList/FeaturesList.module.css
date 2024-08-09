@@ -1,0 +1,7 @@
+.featuresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: none;
+  overflow-y: auto;
+}

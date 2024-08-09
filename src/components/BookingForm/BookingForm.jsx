@@ -10,6 +10,7 @@ import * as yup from "yup";
 // import enGB from "date-fns/locale/en-GB";
 import css from "./BookingForm.module.css";
 import Button from "../Button/Button";
+import { Icon } from "../Icon/Icon";
 // import { format } from "date-fns";
 
 // const customLocale = {
@@ -93,8 +94,8 @@ export default function BookingForm() {
           <p className={css.error}>{errors.email?.message}</p>
         </div>
         <div>
-          {/* <div className="custom-datepicker__wrapper">
-            <DatePicker
+          <div className="custom-datepicker__wrapper">
+            {/* <DatePicker
               className="custom-datepicker"
               calendarClassName="custom-datepicker__calendar"
               wrapperClassName="custom-datepicker__wrapper"
@@ -104,16 +105,15 @@ export default function BookingForm() {
               showPopperArrow={false}
               locale="custom-en-GB"
               minDate={new Date()}
-            />
-            <svg
-              className="custom-datepicker__icon"
+            /> */}
+            <Icon
+              id="icon-calander"
               width="20"
               height="20"
-              aria-label="btn icon"
-            >
-              <use href={`${spritePath}#icon-calendar`} />
-            </svg>
-          </div> */}
+              stroke="#101828"
+              fill="none"
+            ></Icon>
+          </div>
           <p className={css.error}>{errors.date?.message}</p>
         </div>
         <div>
