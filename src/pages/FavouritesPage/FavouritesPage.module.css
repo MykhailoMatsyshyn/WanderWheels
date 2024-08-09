@@ -1,0 +1,10 @@
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 1312px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 64px;
+  margin-top: 85px;
+}

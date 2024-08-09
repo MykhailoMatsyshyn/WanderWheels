@@ -1,4 +1,4 @@
-.home {
+.homeContainer {
   background-image: url("../../assets/images/homeBackground.png");
   background-size: cover;
   background-position: center;
@@ -8,30 +8,27 @@
   color: var(--color-primary);
 }
 
-.home2 {
+.contentWrapper {
   width: 1312px;
   margin: 0 auto;
   margin-top: 118px;
 }
 
-.home3 {
+.textSection {
   display: flex;
   flex-direction: column;
   gap: 30px;
   width: 560px;
 }
 
-.home3 > p {
+.descriptionText {
   font-size: 33px;
-}
-
-.home4 {
   line-height: 40px;
   white-space: pre-wrap;
   cursor: default;
 }
 
-.highlight {
+.highlightedText {
   font-style: italic;
   color: var(--color-accent);
 }

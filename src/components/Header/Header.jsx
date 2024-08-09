@@ -7,7 +7,6 @@ export default function Header() {
     <header className={css.header}>
       <Logo />
       <Navigation />
-      {/* <hr /> */}
     </header>
   );
 }

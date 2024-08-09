@@ -138,7 +138,7 @@ export default function Filter() {
               </div>
             </div>
 
-            <Button>Search</Button>
+            <Button className={css.searchBtn}>Search</Button>
           </Form>
         )}
       </Formik>

@@ -1,13 +1,21 @@
 .cont {
+  height: 358px;
+  width: 888px;
   padding: 24px;
   border-radius: 20px;
   border: 1px solid rgba(16, 24, 40, 0.2);
   display: flex;
   gap: 24px;
+  transition: box-shadow 0.3s ease;
+}
+
+.cont:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .img {
   width: 290px;
+  height: 310px;
   border-radius: 10px;
   background-color: rgba(16, 24, 40, 0.2);
   object-fit: cover;
@@ -25,6 +33,13 @@
   font-weight: 600;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.firstSec > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 350px;
 }
 
 .favCont {
@@ -70,7 +85,7 @@
 }
 
 .description {
-  color: var(--light-blue);
+  color: rgba(71, 84, 103, 1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -101,6 +116,7 @@
   width: max-content;
   display: flex;
   gap: 8px;
+  font-weight: 500;
 }
 
 .text {

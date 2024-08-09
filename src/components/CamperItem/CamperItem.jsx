@@ -22,6 +22,10 @@ export default function CamperItem({ data, onShowMore }) {
     reviews = [],
   } = data;
 
+  const [country, city] = location.split(", ");
+  const formattedLocation = `${city}, ${country}`;
+  console.log(formattedLocation);
+
   const dispatch = useDispatch();
   const favoriteCampers = useSelector(selectFavoriteCampers);
 
@@ -76,7 +80,7 @@ export default function CamperItem({ data, onShowMore }) {
               width={"16"}
               height={"16"}
             />
-            <p>{location}</p>
+            <p>{formattedLocation}</p>
           </div>
         </div>
 
@@ -86,7 +90,7 @@ export default function CamperItem({ data, onShowMore }) {
           <ul className={css.featuresList}>
             <li className={css.feature}>
               <Icon width="20" height="20" id="icon-adults" />
-              <p>{adults} adultes</p>
+              <p>{adults} adults</p>
             </li>
             <li className={css.feature}>
               <Icon width="20" height="20" id="icon-automatic" />

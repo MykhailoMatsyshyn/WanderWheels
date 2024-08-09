@@ -1,0 +1,17 @@
+.comperListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 100px;
+}
+
+.comperItems {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.loadMoreBtn {
+  margin-top: 50px;
+}

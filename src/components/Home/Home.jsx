@@ -4,17 +4,17 @@ import css from "./Home.module.css";
 
 export default function Home() {
   return (
-    <div className={css.home}>
-      <div className={css.home2}>
-        <div className={css.home3}>
-          <p className={css.home4}>
+    <div className={css.homeContainer}>
+      <div className={css.contentWrapper}>
+        <div className={css.textSection}>
+          <p className={css.descriptionText}>
             Discover the hidden gems of Ukraine while enjoying the {"\n"}comfort
             and
-            <span className={css.highlight}> convenience</span>
+            <span className={css.highlightedText}> convenience</span>
             {"\n"}of a fully equipped camper
           </p>
           <Link to="/catalog" className={css.buttonLink}>
-            <Button background>Book Now!</Button>
+            <Button background>Let's Go!</Button>
           </Link>
         </div>
       </div>
