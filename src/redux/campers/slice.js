@@ -18,15 +18,8 @@ const campersSlice = createSlice({
     incrementPage(state) {
       state.currentPage++;
     },
-    resetPage(state) {
-      state.currentPage = 1;
-      state.campers = [];
-    },
     setPage(state, action) {
       state.currentPage = action.payload;
-    },
-    resetItems(state) {
-      state.campers = [];
     },
     addToFavorite(state, action) {
       const camperId = action.payload;
