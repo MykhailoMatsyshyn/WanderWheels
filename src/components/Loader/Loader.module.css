@@ -1,38 +1,79 @@
 @keyframes speed {
-  0% { transform: translate(2px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -3px) rotate(-1deg); }
-  20% { transform: translate(-2px, 0px) rotate(1deg); }
-  30% { transform: translate(1px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 3px) rotate(-1deg); }
-  60% { transform: translate(-1px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-2px, -1px) rotate(1deg); }
-  90% { transform: translate(2px, 1px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -3px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-2px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 3px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-2px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 
 @keyframes strikes {
-  from { opacity: 1; left: var(--left); }
-  to { left: calc(var(--left) - 100px); opacity: 0; }
+  from {
+    opacity: 1;
+    left: var(--left);
+  }
+  to {
+    left: calc(var(--left) - 100px);
+    opacity: 0;
+  }
 }
 
 @keyframes dots {
-  from { width: 0px; }
-  to { width: 15px; }
+  from {
+    width: 0px;
+  }
+  to {
+    width: 15px;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes rotate360 {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.fadeIn, .loadingWindow {
+.fadeIn,
+.loadingWindow {
   animation: fadeIn 0.4s both;
 }
 
@@ -87,12 +128,29 @@
   animation: strikes 0.2s linear infinite;
 }
 
-.strike:nth-of-type(6n+1) { top: 3%; }
-.strike:nth-of-type(6n+2) { top: 22%; animation-delay: -0.05s; }
-.strike:nth-of-type(6n+3) { top: 41%; animation-delay: -0.1s; }
-.strike:nth-of-type(6n+4) { top: 60%; animation-delay: -0.15s; }
-.strike:nth-of-type(6n+5) { top: 79%; animation-delay: -0.2s; }
-.strike:nth-of-type(6n) { top: 98%; animation-delay: -0.25s; }
+.strike:nth-of-type(6n + 1) {
+  top: 3%;
+}
+.strike:nth-of-type(6n + 2) {
+  top: 22%;
+  animation-delay: -0.05s;
+}
+.strike:nth-of-type(6n + 3) {
+  top: 41%;
+  animation-delay: -0.1s;
+}
+.strike:nth-of-type(6n + 4) {
+  top: 60%;
+  animation-delay: -0.15s;
+}
+.strike:nth-of-type(6n + 5) {
+  top: 79%;
+  animation-delay: -0.2s;
+}
+.strike:nth-of-type(6n) {
+  top: 98%;
+  animation-delay: -0.25s;
+}
 
 .carDetail {
   position: absolute;
@@ -130,10 +188,16 @@
   border-bottom-right-radius: 0;
 }
 
-.window:nth-of-type(5n+1) { left: 46%; }
-.window:nth-of-type(5n+2) { left: 28%; }
-.window:nth-of-type(5n+3) { left: 10%; }
-.window:nth-of-type(5n+4) {
+.window:nth-of-type(5n + 1) {
+  left: 46%;
+}
+.window:nth-of-type(5n + 2) {
+  left: 28%;
+}
+.window:nth-of-type(5n + 3) {
+  left: 10%;
+}
+.window:nth-of-type(5n + 4) {
   left: 0%;
   width: 7%;
   border-top-left-radius: 15px 15px;
@@ -195,17 +259,50 @@
   border-radius: 50%;
   top: 45px;
   border: 1px solid var(--background-color);
-  background: linear-gradient(45deg, transparent 45%, var(--car-color) 46%, var(--car-color) 54%, transparent 55%),
-              linear-gradient(-45deg, transparent 45%, var(--car-color) 46%, var(--car-color) 54%, transparent 55%),
-              linear-gradient(90deg, transparent 45%, var(--car-color) 46%, var(--car-color) 54%, transparent 55%),
-              linear-gradient(0deg, transparent 45%, var(--car-color) 46%, var(--car-color) 54%, transparent 55%),
-              radial-gradient(var(--car-color) 29%, transparent 30%, transparent 50%, var(--car-color) 51%),
-              var(--background-color);
-  animation: rotate360 infinite linear .7s;
+  background: linear-gradient(
+      45deg,
+      transparent 45%,
+      var(--car-color) 46%,
+      var(--car-color) 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 45%,
+      var(--car-color) 46%,
+      var(--car-color) 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 45%,
+      var(--car-color) 46%,
+      var(--car-color) 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 45%,
+      var(--car-color) 46%,
+      var(--car-color) 54%,
+      transparent 55%
+    ),
+    radial-gradient(
+      var(--car-color) 29%,
+      transparent 30%,
+      transparent 50%,
+      var(--car-color) 51%
+    ),
+    var(--background-color);
+  animation: rotate360 infinite linear 0.7s;
 }
 
-.wheel:nth-of-type(2n+1) { left: 7px; }
-.wheel:nth-of-type(2n) { left: 87px; }
+.wheel:nth-of-type(2n + 1) {
+  left: 7px;
+}
+.wheel:nth-of-type(2n) {
+  left: 87px;
+}
 
 .door {
   border: 1px solid white;
@@ -219,7 +316,7 @@
 
 .door::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 5px;
   height: 1px;
   background: white;

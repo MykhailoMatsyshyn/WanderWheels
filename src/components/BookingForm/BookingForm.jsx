@@ -1,134 +1,92 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import "./custom-datepicker.css";
-// import spritePath from "../../assets/icons/icons.svg";
-// import { registerLocale } from "react-datepicker";
-// import enGB from "date-fns/locale/en-GB";
 import css from "./BookingForm.module.css";
 import Button from "../Button/Button";
+import MyDatePicker from "../MyDatePicker/MyDatePicker";
 import { Icon } from "../Icon/Icon";
-// import { format } from "date-fns";
 
-// const customLocale = {
-//   ...enGB,
-//   localize: {
-//     ...enGB.localize,
-//     day: (n) => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][n],
-//   },
-// };
-
-// registerLocale("custom-en-GB", customLocale);
+const formInitialValues = {
+  name: "",
+  email: "",
+  date: "",
+  comment: "",
+};
 
 const schema = yup
   .object({
     name: yup.string().required("Name is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
-    date: yup.date().required("Booking date is required").nullable(),
-    comment: yup.string().optional(),
+    // date: yup.date().required("Booking date is required").nullable(),
+    // comment: yup.string().optional(),
   })
   .required();
 
 export default function BookingForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const onSubmit = (data) => {
-    // Format the date before submitting
-    const formattedData = {
-      ...data,
-      date: format(data.date, "yyyy-MM-dd"),
-    };
-
-    console.log(formattedData);
-    //TODO: implement booking
-    reset({
-      name: "",
-      email: "",
-      date: null,
-      comment: "",
-    });
-    setSelectedDate(null);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setValue("date", date);
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-      <div className={css.titleContainer}>
-        <h2 className={css.title}>Book your campervan now</h2>
-        <p className={css.prompt}>
-          Stay connected! We are always ready to help you.
-        </p>
-      </div>
-      <div className={css.inputs}>
-        <div>
-          <input
-            {...register("name")}
-            placeholder="Name"
-            className={css.input}
-          />
-          <p className={css.error}>{errors.name?.message}</p>
-        </div>
-        <div>
-          <input
-            {...register("email")}
-            placeholder="Email"
-            className={css.input}
-          />
-          <p className={css.error}>{errors.email?.message}</p>
-        </div>
-        <div>
-          <div className="custom-datepicker__wrapper">
-            {/* <DatePicker
-              className="custom-datepicker"
-              calendarClassName="custom-datepicker__calendar"
-              wrapperClassName="custom-datepicker__wrapper"
-              selected={selectedDate}
-              onChange={handleDateChange}
-              placeholderText="Booking date"
-              showPopperArrow={false}
-              locale="custom-en-GB"
-              minDate={new Date()}
-            /> */}
-            <Icon
-              id="icon-calander"
-              width="20"
-              height="20"
-              stroke="#101828"
-              fill="none"
-            ></Icon>
+    <Formik
+      initialValues={formInitialValues}
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+    >
+      {({ setFieldValue }) => (
+        <Form className={css.form}>
+          <div className={css.titleContainer}>
+            <h2 className={css.title}>Book your campervan now</h2>
+            <p className={css.prompt}>
+              Stay connected! We are always ready to help you.
+            </p>
           </div>
-          <p className={css.error}>{errors.date?.message}</p>
-        </div>
-        <div>
-          <textarea
-            {...register("comment")}
-            placeholder="Comment"
-            className={`${css.input} ${css.textarea}`}
-          />
-          <p className={css.error}>{errors.comment?.message}</p>
-        </div>
-      </div>
-      {/* <button type="submit" className={css.btn}>
-        Send
-      </button> */}
-      <Button>Send</Button>
-    </form>
+
+          <div className={css.inputs}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Name"
+              className={css.input}
+            />
+            <ErrorMessage name="name" component="span" className={css.error} />
+
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+              className={css.input}
+            />
+            <ErrorMessage name="email" component="span" className={css.error} />
+
+            {/* <div className={css.datepickerWrapperContainer}> */}
+            <MyDatePicker
+              name="date"
+              onChange={(date) => setFieldValue("date", date)}
+              placeholder="Select date"
+            />
+            {/* <Icon
+                id="icon-calendar"
+                fill="none"
+                stroke="#101828"
+                width="20"
+                height="20"
+                className={css.icon}
+              />
+            </div>
+            <ErrorMessage name="date" component="span" className={css.error} /> */}
+
+            <Field
+              as="textarea"
+              name="comment"
+              placeholder="Comment"
+              className={`${css.input} ${css.textarea}`}
+            />
+          </div>
+          <Button type="submit">Send</Button>
+        </Form>
+      )}
+    </Formik>
   );
 }

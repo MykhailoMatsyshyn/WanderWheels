@@ -1,24 +1,30 @@
 .form {
   width: 448px;
   padding: 24px;
-  gap: 24px;
   border-radius: 10px;
-  border: 1px solid rgba(16, 24, 40, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.2);
 
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .input {
   width: 100%;
   padding: 18px;
-  gap: 10px;
+  /* gap: 10px; */
+  font-size: 16px;
+  line-height: 20px;
   border-radius: 10px;
   outline: none;
   border: none;
   background-color: var(--color-white-light);
-  margin-bottom: 4px;
   color: var(--color-primary);
 }
 .input::placeholder {
@@ -62,12 +68,6 @@
   line-height: 1.4;
   color: var(--color-accent);
   padding-left: 18px;
-}
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
 }
 
 .btn {

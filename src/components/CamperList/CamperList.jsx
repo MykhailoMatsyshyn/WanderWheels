@@ -13,12 +13,10 @@ import CamperItem from "../CamperItem/CamperItem";
 import css from "./CamperList.module.css";
 import { fetchCampersPage } from "../../redux/campers/operations";
 import Button from "../Button/Button";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function CamperList({ campers: propsCampers }) {
   const dispatch = useDispatch();
-
-  // const [visibleCampers, setVisibleCampers] = useState(4);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const campers = propsCampers || useSelector(selectCampers);
   const currentPage = useSelector(selectCurrentPage);
@@ -41,21 +39,38 @@ export default function CamperList({ campers: propsCampers }) {
 
   return (
     <div className={css.comperListContainer}>
-      <ul className={css.comperItems}>
-        {campers.map((camper) => (
-          <li key={camper._id}>
-            <CamperItem data={camper} />
-          </li>
-        ))}
-      </ul>
-      {!propsCampers && moreToLoad && !isLoading && (
-        <Button
-          background={false}
-          onClick={handleLoadMore}
-          className={css.loadMoreBtn}
-        >
-          Load More
-        </Button>
+      {isLoading && (
+        <ThreeDots
+          visible={true}
+          height="80"
+          width="80"
+          color="#e44848"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      )}
+      {isError && <p className={css.error}>Error loading data</p>}
+      {!isLoading && !isError && (
+        <>
+          <ul className={css.comperItems}>
+            {campers.map((camper) => (
+              <li key={camper._id}>
+                <CamperItem data={camper} />
+              </li>
+            ))}
+          </ul>
+          {!propsCampers && moreToLoad && (
+            <Button
+              background={false}
+              onClick={handleLoadMore}
+              className={css.loadMoreBtn}
+            >
+              Load More
+            </Button>
+          )}
+        </>
       )}
     </div>
   );

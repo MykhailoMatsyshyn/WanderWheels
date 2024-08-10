@@ -28,5 +28,4 @@ body:not(.modalOpen)::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb {
   background: #d9d9d9;
   border-radius: 7px;
-  height: 264px;
 }
