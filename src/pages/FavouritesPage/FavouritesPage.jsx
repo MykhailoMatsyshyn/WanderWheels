@@ -4,6 +4,7 @@ import { selectFavoriteCampers } from "../../redux/campers/selectors";
 import CamperList from "../../components/CamperList/CamperList";
 import css from "./FavouritesPage.module.css";
 import Button from "../../components/Button/Button";
+import road from "../../assets/images/road.jpg";
 
 export default function FavouritesPage() {
   const campers = useSelector(selectFavoriteCampers);
@@ -15,10 +16,12 @@ export default function FavouritesPage() {
         <CamperList campers={campers} />
       ) : (
         <div>
-          <h2>
+          <img src={road} alt="road" className={css.containerImg} />
+          <h2 className={css.containerTitle}>
             The open road is calling, but your favorites list needs a boost!
           </h2>
           <Button
+            className={css.containerButton}
             onClick={() => {
               navigate("/catalog");
             }}
