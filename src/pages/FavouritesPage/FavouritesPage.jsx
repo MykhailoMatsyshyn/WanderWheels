@@ -11,11 +11,11 @@ export default function FavouritesPage() {
   const navigate = useNavigate();
 
   return (
-    <div className={css.container}>
+    <div className={css.containerFav}>
       {campers.length > 0 ? (
         <CamperList campers={campers} />
       ) : (
-        <div>
+        <div className={css.container}>
           <img src={road} alt="road" className={css.containerImg} />
           <h2 className={css.containerTitle}>
             The open road is calling, but your favorites list needs a boost!

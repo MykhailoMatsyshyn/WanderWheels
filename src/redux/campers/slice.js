@@ -27,14 +27,11 @@ const campersSlice = createSlice({
     },
     deleteFromFavorite(state, action) {
       const camperId = action.payload;
-      console.log(state.favoriteCampers);
 
       const index = state.favoriteCampers.findIndex(
         (сamper) => сamper._id === camperId
       );
       state.favoriteCampers.splice(index, 1);
-
-      console.log(index);
     },
   },
   extraReducers: (builder) => {
