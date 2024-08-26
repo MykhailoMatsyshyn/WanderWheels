@@ -14,3 +14,15 @@
 .loadMoreBtn {
   margin-top: 50px;
 }
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(71, 84, 103, 1);
+}
+
+.loaderContainer {
+  margin-top: 50px;
+}

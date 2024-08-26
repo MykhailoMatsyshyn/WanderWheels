@@ -39,20 +39,8 @@ export default function CamperList({ campers: propsCampers }) {
 
   return (
     <div className={css.comperListContainer}>
-      {isLoading && (
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#e44848"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      )}
       {isError && <p className={css.error}>Error loading data</p>}
-      {!isLoading && !isError && (
+      {campers.length > 0 && (
         <>
           <ul className={css.comperItems}>
             {campers.map((camper) => (
@@ -61,16 +49,30 @@ export default function CamperList({ campers: propsCampers }) {
               </li>
             ))}
           </ul>
-          {!propsCampers && moreToLoad && (
-            <Button
-              background={false}
-              onClick={handleLoadMore}
-              className={css.loadMoreBtn}
-            >
-              Load More
-            </Button>
-          )}
         </>
+      )}
+      {!propsCampers && moreToLoad && !isLoading && (
+        <Button
+          background={false}
+          onClick={handleLoadMore}
+          className={css.loadMoreBtn}
+        >
+          Load More
+        </Button>
+      )}
+      {isLoading && (
+        <div className={css.loaderContainer}>
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#e44848"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
       )}
     </div>
   );
