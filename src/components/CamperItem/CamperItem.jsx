@@ -55,7 +55,7 @@ export default function CamperItem({ data }) {
         <div className={css.firstSec}>
           <p>{name}</p>
           <div className={css.favCont}>
-            <p>&#8364;{price},00</p>
+            <p>€{price.toFixed(2).replace(".", ",")}</p>
             <div className={css.iconCont}>
               <svg width={24} height={24} onClick={handleFavoriteClick}>
                 <use
@@ -77,7 +77,7 @@ export default function CamperItem({ data }) {
               width={"16"}
               height={"16"}
             />
-            <p>
+            <p className={css.ratingText}>
               {rating}({reviews.length} Reviews)
             </p>
           </div>

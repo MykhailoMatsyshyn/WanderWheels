@@ -62,7 +62,9 @@ export default function CamperModal({ camper, onClose }) {
                 <p>{formatLocation(camper.location)}</p>
               </div>
             </div>
-            <h3 className={css.title}>{`$${camper.price},00`}</h3>
+            <h3 className={css.title}>
+              {`€${camper.price.toFixed(2).replace(".", ",")}`}
+            </h3>
           </div>
         </div>
         <div className={css.scrollable}>
