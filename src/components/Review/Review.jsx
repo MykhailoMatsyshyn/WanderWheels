@@ -1,6 +1,5 @@
 import css from "./Review.module.css";
 import { Icon } from "../Icon/Icon";
-import clsx from "clsx";
 
 export default function Review({ review }) {
   return (
@@ -11,9 +10,10 @@ export default function Review({ review }) {
           <div className={css.reviewHeader}>
             <h3 className={css.name}>{review.reviewer_name}</h3>
             <div className={css.rating}>
-              {[...Array(5)].map((star, index) => {
+              {[...Array(5)].map((_, index) => {
                 return index < review.reviewer_rating ? (
                   <Icon
+                    key={index}
                     id="icon-rating"
                     width="16"
                     height="16"
@@ -22,6 +22,7 @@ export default function Review({ review }) {
                   ></Icon>
                 ) : (
                   <Icon
+                    key={index}
                     id="icon-rating"
                     width="16"
                     height="16"
