@@ -6,11 +6,13 @@ export default function Button({
   background = true,
   onClick,
   className,
+  type = "button",
 }) {
   return (
     <button
       className={clsx(css.baseStyle, background ? "" : css.border, className)}
       onClick={onClick}
+      type={type}
     >
       {children}
     </button>

@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import MainLayout from "./components/MainLayout/MainLayout.jsx";
+import { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage.jsx"));
@@ -11,6 +12,7 @@ const FavouritesPage = lazy(() =>
 export default function App() {
   return (
     <>
+      <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />

@@ -13,7 +13,7 @@ export default function CamperModal({ camper, onClose }) {
 
   const handleClickOutside = (event) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-      onClose();
+      // onClose();
     }
   };
 
