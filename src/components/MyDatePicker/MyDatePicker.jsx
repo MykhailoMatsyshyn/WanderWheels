@@ -4,6 +4,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CalendarIcon from "../CalendarIcon/CalendarIcon";
+import dayjs from "dayjs";
 
 const theme = createTheme({
   components: {
@@ -31,7 +32,7 @@ const theme = createTheme({
             opacity: 1,
           },
           "&:active::placeholder, &:focus::placeholder, &:hover::placeholder": {
-            opacity: 0,
+            color: "var(--color-primary)",
           },
         },
       },
@@ -64,10 +65,36 @@ const theme = createTheme({
         },
       },
     },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            backgroundColor: "rgba(228, 72, 72, 0.4)",
+            color: "var(--color-white)",
+          },
+          "&.Mui-selected": {
+            backgroundColor: "var(--color-accent)",
+            color: "var(--color-white)",
+          },
+          "&.Mui-selected:hover": {
+            backgroundColor: "var(--color-accent)",
+          },
+          "&.Mui-selected:focus": {
+            backgroundColor: "var(--color-accent)",
+            color: "var(--color-white)",
+          },
+          "&.Mui-selected:active": {
+            backgroundColor: "var(--color-accent)",
+          },
+        },
+      },
+    },
   },
 });
 
 export default function MyDatePicker({ value, onChange }) {
+  const today = dayjs();
+
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -78,6 +105,8 @@ export default function MyDatePicker({ value, onChange }) {
           slots={{
             openPickerIcon: CalendarIcon,
           }}
+          minDate={today} // Disable past dates
+          shouldDisableMonth={(date) => date.isBefore(today, "month")} // Disable previous months
         />
       </LocalizationProvider>
     </ThemeProvider>
