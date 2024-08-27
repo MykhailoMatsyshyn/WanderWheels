@@ -97,7 +97,17 @@
 }
 
 .rating {
-  text-decoration: underline;
+  position: relative;
+}
+
+.rating::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--color-primary);
 }
 
 .description {
