@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import clsx from "clsx";
 import Button from "../Button/Button";
-import { EQUIPMENT, TYPE } from "../../constants";
+import { FILTER_EQUIPMENT, TYPE } from "../../constants";
 import css from "./Filter.module.css";
 import { Icon } from "../Icon/Icon";
 
@@ -21,18 +21,14 @@ import {
 
 const initialValues = {
   location: "",
-  filters: {
-    ac: false,
+  equipment: {
+    airConditioner: false,
     automatic: false,
     kitchen: false,
-    tv: false,
-    wc: false,
+    TV: false,
+    shower: false,
   },
-  vehicleType: {
-    van: false,
-    fully: false,
-    alcove: false,
-  },
+  vehicleType: "",
 };
 
 /**************************************/
@@ -129,16 +125,17 @@ export default function Filter() {
               <h3>Vehicle equipment</h3>
               <hr className={css.hr} />
               <div className={css.equipmentList}>
-                {EQUIPMENT.map((filter) => (
+                {FILTER_EQUIPMENT.map((filter) => (
                   <label
                     key={filter.name}
                     className={clsx(css.item, {
-                      [css.checkedItem]: values.filters[filter.name],
+                      [css.checkedItem]: values.equipment[filter.name],
                     })}
                   >
                     <Field
                       type="checkbox"
-                      name={`filters.${filter.name}`}
+                      name={`equipment.${filter.name}`}
+                      value={filter.name}
                       className={css.hiddenCheckbox}
                     />
                     <span className={css.icon}>
@@ -157,13 +154,20 @@ export default function Filter() {
                     <label
                       key={filter.name}
                       className={clsx(css.item, {
-                        [css.checkedItem]: values.vehicleType[filter.name],
+                        [css.checkedItem]: values.vehicleType === filter.name,
                       })}
                     >
                       <Field
-                        type="checkbox"
-                        name={`vehicleType.${filter.name}`}
+                        type="radio"
+                        name="vehicleType"
+                        value={filter.name}
                         className={css.hiddenCheckbox}
+                        onClick={() => {
+                          if (values.vehicleType === filter.name) {
+                            // Якщо той же самий варіант вибраний, скидаємо вибір
+                            values.vehicleType = "";
+                          }
+                        }}
                       />
                       <span className={css.icon}>
                         <Icon id={`icon-${filter.name}`}></Icon>

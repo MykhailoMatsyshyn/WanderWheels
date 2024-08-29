@@ -19,21 +19,35 @@ export const fetchCampersPage = createAsyncThunk(
         url.searchParams.append("location", filters.location);
       }
 
-      // if (filters.type && filters.type !== "all") {
-      //   url.searchParams.append("form", filters.type);
-      // }
+      if (filters.vehicleType) {
+        console.log("filters.vehicleTypes:", filters.vehicleType);
+        url.searchParams.append("form", filters.vehicleType);
+      }
 
-      //  if (filters.equipment) {
-      //    let searchLine = [];
-      //    Object.keys(filters.equipment).forEach((key) => {
-      //      if (filters.equipment[key]) {
-      //        searchLine.push(key);
-      //        console.log(key, searchLine);
-      //      }
-      //    });
-      //    if (searchLine)
-      //      url.searchParams.append("search", searchLine.join(" "));
-      //  }
+      if (filters.equipment) {
+        for (const [key, value] of Object.entries(filters.equipment)) {
+          if (value) {
+            switch (key) {
+              case "airConditioner":
+                url.searchParams.append("isAirConditioner", true);
+                break;
+              case "kitchen":
+                url.searchParams.append("isKitchen", true);
+                break;
+              case "TV":
+                url.searchParams.append("isTV", true);
+                break;
+              case "shower":
+              case "wc":
+                url.searchParams.append("isShowerOrWC", true);
+                break;
+              case "automatic":
+                url.searchParams.append("transmission", "automatic");
+                break;
+            }
+          }
+        }
+      }
 
       const response = await axios.get(url.toString());
       return response.data;

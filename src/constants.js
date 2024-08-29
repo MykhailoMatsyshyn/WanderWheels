@@ -1,10 +1,18 @@
-// export const EQUIPMENT = [
-//   { name: "ac", label: "AC" },
-//   { name: "automatic", label: "Automatic" },
-//   { name: "kitchen", label: "Kitchen" },
-//   { name: "tv", label: "TV" },
-//   { name: "wc", label: "WC" },
-// ];
+export const FILTER_EQUIPMENT = [
+  {
+    name: "airConditioner",
+    label: "AC",
+    iconParams: { id: "icon-ac", fill: "#101828" },
+  },
+  {
+    name: "automatic",
+    label: "Automatic",
+    iconParams: { id: "icon-automatic" },
+  },
+  { name: "kitchen", label: "Kitchen", iconParams: { id: "icon-kitchen" } },
+  { name: "TV", label: "TV", iconParams: { id: "icon-tv", fill: "#101828" } },
+  { name: "shower", label: "Shower", iconParams: { id: "icon-wc" } },
+];
 
 export const EQUIPMENT = [
   {
@@ -56,7 +64,7 @@ export const EQUIPMENT = [
 ];
 
 export const TYPE = [
-  { name: "van", label: "Van" },
-  { name: "fully", label: "Fully integrated" },
+  { name: "panelTruck", label: "Van" },
+  { name: "fullyIntegrated", label: "Fully integrated" },
   { name: "alcove", label: "Alcove" },
 ];
