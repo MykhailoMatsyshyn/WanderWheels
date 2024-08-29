@@ -67,4 +67,5 @@ export const TYPE = [
   { name: "panelTruck", label: "Van" },
   { name: "fullyIntegrated", label: "Fully integrated" },
   { name: "alcove", label: "Alcove" },
+  { name: "filter-off", label: "All" },
 ];

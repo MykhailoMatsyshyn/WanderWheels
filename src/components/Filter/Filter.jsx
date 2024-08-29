@@ -135,7 +135,7 @@ export default function Filter() {
                     <Field
                       type="checkbox"
                       name={`equipment.${filter.name}`}
-                      value={filter.name}
+                      // value={filter.name}
                       className={css.hiddenCheckbox}
                     />
                     <span className={css.icon}>
@@ -162,14 +162,8 @@ export default function Filter() {
                         name="vehicleType"
                         value={filter.name}
                         className={css.hiddenCheckbox}
-                        onClick={() => {
-                          if (values.vehicleType === filter.name) {
-                            // Якщо той же самий варіант вибраний, скидаємо вибір
-                            values.vehicleType = "";
-                          }
-                        }}
                       />
-                      <span className={css.icon}>
+                      <span>
                         <Icon id={`icon-${filter.name}`}></Icon>
                       </span>
                       {filter.label}

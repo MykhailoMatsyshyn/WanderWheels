@@ -19,7 +19,7 @@ export const fetchCampersPage = createAsyncThunk(
         url.searchParams.append("location", filters.location);
       }
 
-      if (filters.vehicleType) {
+      if (filters.vehicleType && filters.vehicleType !== "filter-off") {
         console.log("filters.vehicleTypes:", filters.vehicleType);
         url.searchParams.append("form", filters.vehicleType);
       }
