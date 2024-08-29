@@ -17,10 +17,11 @@
 
 .error {
   text-align: center;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: 500;
   line-height: 1.5;
   color: var(--color-secondary-dark);
+  margin-top: 50px;
 }
 
 .loaderContainer {

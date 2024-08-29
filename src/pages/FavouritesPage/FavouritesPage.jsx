@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectFavoriteCampers } from "../../redux/campers/selectors";
+import { setError } from "../../redux/campers/slice";
 import CamperList from "../../components/CamperList/CamperList";
 import css from "./FavouritesPage.module.css";
 import Button from "../../components/Button/Button";
@@ -9,8 +10,10 @@ import road from "../../assets/images/road.jpg";
 import toast from "react-hot-toast";
 
 export default function FavouritesPage() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    console.log("FavouritesPage");
+    dispatch(setError(false));
 
     const success = sessionStorage.getItem("formSubmitSuccess");
     if (success) {

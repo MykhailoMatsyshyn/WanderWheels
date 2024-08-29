@@ -14,11 +14,10 @@ const ScrollToTopButton = () => {
       const path = progressPath.querySelector("path");
       const length = path.getTotalLength();
 
-      // Заміна на правильний доступ до стилів
       path.style.transition = "none";
       path.style.strokeDasharray = `${length} ${length}`;
       path.style.strokeDashoffset = `${length}`;
-      path.getBoundingClientRect(); // вимушене перепланування для перерахунку
+      path.getBoundingClientRect();
       path.style.transition = "stroke-dashoffset 10ms linear";
 
       setPathLength(length);

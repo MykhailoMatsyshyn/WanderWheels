@@ -2,13 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import {
   selectCampers,
+  selectFilters,
   selectError,
   selectLoading,
   selectCurrentPage,
   selectPerPage,
   selectMoreToLoad,
 } from "../../redux/campers/selectors";
-import { incrementPage, setPage } from "../../redux/campers/slice";
+import {
+  incrementPage,
+  resetСampers,
+  setFilters,
+  setPage,
+} from "../../redux/campers/slice";
 import CamperItem from "../CamperItem/CamperItem";
 import css from "./CamperList.module.css";
 import { fetchCampersPage } from "../../redux/campers/operations";
@@ -19,6 +25,7 @@ export default function CamperList({ campers: propsCampers }) {
   const dispatch = useDispatch();
 
   const campers = propsCampers || useSelector(selectCampers);
+  const filters = useSelector(selectFilters);
   const currentPage = useSelector(selectCurrentPage);
   const perPage = useSelector(selectPerPage);
   const moreToLoad = useSelector(selectMoreToLoad);
@@ -27,19 +34,21 @@ export default function CamperList({ campers: propsCampers }) {
 
   useEffect(() => {
     if (!propsCampers) {
+      dispatch(setFilters({}));
+      dispatch(resetСampers());
       dispatch(fetchCampersPage({ page: 1, limit: perPage }));
       dispatch(setPage(2));
     }
-  }, [dispatch, propsCampers, perPage]);
+  }, []);
 
   const handleLoadMore = () => {
-    dispatch(fetchCampersPage({ page: currentPage, limit: perPage }));
+    dispatch(fetchCampersPage({ page: currentPage, limit: perPage, filters }));
     dispatch(incrementPage());
   };
 
   return (
     <div className={css.comperListContainer}>
-      {isError && <p className={css.error}>Error loading data</p>}
+      {isError && <p className={css.error}>No campervans found</p>}
       {campers.length > 0 && (
         <>
           <ul className={css.comperItems}>

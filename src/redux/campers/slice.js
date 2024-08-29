@@ -23,13 +23,17 @@ const campersSlice = createSlice({
       state.currentPage = 1;
       state.campers = [];
     },
+    resetСampers(state) {
+      state.campers = [];
+    },
     setPage(state, action) {
       state.currentPage = action.payload;
     },
     setFilters(state, action) {
-      console.log("action.payload:", action.payload);
-
       state.filters = action.payload;
+    },
+    setError(state, action) {
+      state.isError = action.payload;
     },
     addToFavorite(state, action) {
       const camperId = action.payload;
@@ -48,6 +52,7 @@ const campersSlice = createSlice({
     builder
       .addCase(fetchCampersPage.pending, (state) => {
         state.isLoading = true;
+        state.moreToLoad = true;
       })
       .addCase(fetchCampersPage.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -57,10 +62,13 @@ const campersSlice = createSlice({
 
         state.campers = [
           ...state.campers,
-          ...action.payload.filter((camper) => !ids.includes(camper._id)),
+          ...action.payload.campers.filter(
+            (camper) => !ids.includes(camper._id)
+          ),
         ];
 
-        if (action.payload.length < state.perPage) {
+        const loadedCampersCount = state.campers.length;
+        if (loadedCampersCount >= action.payload.totalCount) {
           state.moreToLoad = false;
         }
       })
@@ -78,6 +86,8 @@ export const {
   incrementPage,
   setPage,
   setFilters,
+  setError,
   resetPage,
+  resetСampers,
 } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

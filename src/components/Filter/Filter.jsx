@@ -9,15 +9,13 @@ import { Icon } from "../Icon/Icon";
 
 import normalizeLocation from "../../utils/normalizeLocation";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilters, setPage, resetPage } from "../../redux/campers/slice";
+import { setFilters, resetPage } from "../../redux/campers/slice";
 import { fetchCampersPage } from "../../redux/campers/operations";
 import {
   selectCurrentPage,
   selectPerPage,
   selectFilters,
 } from "../../redux/campers/selectors";
-
-/**************************************/
 
 const initialValues = {
   location: "",
@@ -31,34 +29,20 @@ const initialValues = {
   vehicleType: "",
 };
 
-/**************************************/
-
 export default function Filter() {
   const dispatch = useDispatch();
 
   const currentPage = useSelector(selectCurrentPage);
   const perPage = useSelector(selectPerPage);
   const filters = useSelector(selectFilters);
-
-  // console.log(
-  //   "= currentPage",
-  //   currentPage,
-  //   "= perPage",
-  //   perPage,
-  //   "= filters",
-  //   filters
-  // );
-  /**************************************/
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [locationSelected, setLocationSelected] = useState(false);
 
   const handleLocationChange = () => {
     setLocationSelected(true);
   };
-  /**************************************/
 
   const handleSubmit = (values) => {
-    console.log("values => ", values);
-
     const formattedLocation = normalizeLocation(values.location);
 
     const updatedValues = {
@@ -66,14 +50,14 @@ export default function Filter() {
       location: formattedLocation,
     };
 
-    console.log("updatedValues =>", updatedValues);
-
     dispatch(resetPage());
     dispatch(setFilters(updatedValues));
   };
 
   useEffect(() => {
-    if (Object.keys(filters).length > 0) {
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+    } else if (Object.keys(filters).length > 0) {
       dispatch(
         fetchCampersPage({ page: currentPage, limit: perPage, filters })
       );
@@ -81,7 +65,7 @@ export default function Filter() {
   }, [dispatch, currentPage, perPage, filters]);
 
   return (
-    <>
+    <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values }) => (
           <Form>
@@ -135,7 +119,6 @@ export default function Filter() {
                     <Field
                       type="checkbox"
                       name={`equipment.${filter.name}`}
-                      // value={filter.name}
                       className={css.hiddenCheckbox}
                     />
                     <span className={css.icon}>
@@ -179,6 +162,6 @@ export default function Filter() {
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 }

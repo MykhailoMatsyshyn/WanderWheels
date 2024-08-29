@@ -105,8 +105,8 @@ export default function MyDatePicker({ value, onChange }) {
           slots={{
             openPickerIcon: CalendarIcon,
           }}
-          minDate={today} // Disable past dates
-          shouldDisableMonth={(date) => date.isBefore(today, "month")} // Disable previous months
+          minDate={today}
+          shouldDisableMonth={(date) => date.isBefore(today, "month")}
         />
       </LocalizationProvider>
     </ThemeProvider>
