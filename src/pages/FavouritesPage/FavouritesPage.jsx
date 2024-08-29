@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectFavoriteCampers } from "../../redux/campers/selectors";
@@ -5,8 +6,24 @@ import CamperList from "../../components/CamperList/CamperList";
 import css from "./FavouritesPage.module.css";
 import Button from "../../components/Button/Button";
 import road from "../../assets/images/road.jpg";
+import toast from "react-hot-toast";
 
 export default function FavouritesPage() {
+  useEffect(() => {
+    console.log("FavouritesPage");
+
+    const success = sessionStorage.getItem("formSubmitSuccess");
+    if (success) {
+      toast.success(
+        "Booking successful! 🎉\n Your campervan awaits for your upcoming trip.",
+        {
+          duration: 5000,
+        }
+      );
+      sessionStorage.removeItem("formSubmitSuccess");
+    }
+  }, []);
+
   const campers = useSelector(selectFavoriteCampers);
   const navigate = useNavigate();
 

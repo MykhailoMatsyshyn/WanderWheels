@@ -1,5 +1,5 @@
 import { Form, Formik, Field } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import clsx from "clsx";
 import Button from "../Button/Button";
@@ -7,48 +7,86 @@ import { EQUIPMENT, TYPE } from "../../constants";
 import css from "./Filter.module.css";
 import { Icon } from "../Icon/Icon";
 
+import normalizeLocation from "../../utils/normalizeLocation";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters, setPage, resetPage } from "../../redux/campers/slice";
+import { fetchCampersPage } from "../../redux/campers/operations";
+import {
+  selectCurrentPage,
+  selectPerPage,
+  selectFilters,
+} from "../../redux/campers/selectors";
+
+/**************************************/
+
+const initialValues = {
+  location: "",
+  filters: {
+    ac: false,
+    automatic: false,
+    kitchen: false,
+    tv: false,
+    wc: false,
+  },
+  vehicleType: {
+    van: false,
+    fully: false,
+    alcove: false,
+  },
+};
+
+/**************************************/
+
 export default function Filter() {
+  const dispatch = useDispatch();
+
+  const currentPage = useSelector(selectCurrentPage);
+  const perPage = useSelector(selectPerPage);
+  const filters = useSelector(selectFilters);
+
+  // console.log(
+  //   "= currentPage",
+  //   currentPage,
+  //   "= perPage",
+  //   perPage,
+  //   "= filters",
+  //   filters
+  // );
+  /**************************************/
   const [locationSelected, setLocationSelected] = useState(false);
 
   const handleLocationChange = () => {
     setLocationSelected(true);
   };
+  /**************************************/
 
-  const initialValues = {
-    location: "",
-    filters: {
-      ac: false,
-      automatic: false,
-      kitchen: false,
-      tv: false,
-      wc: false,
-    },
-    vehicleType: {
-      van: false,
-      fully: false,
-      alcove: false,
-    },
+  const handleSubmit = (values) => {
+    console.log("values => ", values);
+
+    const formattedLocation = normalizeLocation(values.location);
+
+    const updatedValues = {
+      ...values,
+      location: formattedLocation,
+    };
+
+    console.log("updatedValues =>", updatedValues);
+
+    dispatch(resetPage());
+    dispatch(setFilters(updatedValues));
   };
 
-  const validationSchema = Yup.object({
-    location: Yup.string().trim(),
-    filters: Yup.object().shape({
-      ac: Yup.boolean(),
-      automatic: Yup.boolean(),
-      kitchen: Yup.boolean(),
-      tv: Yup.boolean(),
-      wc: Yup.boolean(),
-    }),
-    vehicleType: Yup.object().shape({
-      van: Yup.boolean(),
-      fully: Yup.boolean(),
-      alcove: Yup.boolean(),
-    }),
-  });
+  useEffect(() => {
+    if (Object.keys(filters).length > 0) {
+      dispatch(
+        fetchCampersPage({ page: currentPage, limit: perPage, filters })
+      );
+    }
+  }, [dispatch, currentPage, perPage, filters]);
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values }) => (
           <Form>
             <div>
@@ -137,7 +175,9 @@ export default function Filter() {
               </div>
             </div>
 
-            <Button className={css.searchBtn}>Search</Button>
+            <Button className={css.searchBtn} type="submit">
+              Search
+            </Button>
           </Form>
         )}
       </Formik>

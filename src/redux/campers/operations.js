@@ -12,6 +12,29 @@ export const fetchCampersPage = createAsyncThunk(
       url.searchParams.append("limit", limit);
       url.searchParams.append("page", page);
 
+      console.log("filters:", filters);
+
+      if (filters.location) {
+        console.log("filters.location:", filters.location);
+        url.searchParams.append("location", filters.location);
+      }
+
+      // if (filters.type && filters.type !== "all") {
+      //   url.searchParams.append("form", filters.type);
+      // }
+
+      //  if (filters.equipment) {
+      //    let searchLine = [];
+      //    Object.keys(filters.equipment).forEach((key) => {
+      //      if (filters.equipment[key]) {
+      //        searchLine.push(key);
+      //        console.log(key, searchLine);
+      //      }
+      //    });
+      //    if (searchLine)
+      //      url.searchParams.append("search", searchLine.join(" "));
+      //  }
+
       const response = await axios.get(url.toString());
       return response.data;
     } catch (e) {

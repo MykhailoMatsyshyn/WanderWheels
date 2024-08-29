@@ -4,6 +4,7 @@ import { fetchCampersPage } from "./operations";
 export const initialStateCampers = {
   campers: [],
   favoriteCampers: [],
+  filters: {},
   perPage: 4,
   currentPage: 1,
   moreToLoad: true,
@@ -18,8 +19,17 @@ const campersSlice = createSlice({
     incrementPage(state) {
       state.currentPage++;
     },
+    resetPage(state) {
+      state.currentPage = 1;
+      state.campers = [];
+    },
     setPage(state, action) {
       state.currentPage = action.payload;
+    },
+    setFilters(state, action) {
+      console.log("action.payload:", action.payload);
+
+      state.filters = action.payload;
     },
     addToFavorite(state, action) {
       const camperId = action.payload;
@@ -62,6 +72,12 @@ const campersSlice = createSlice({
   },
 });
 
-export const { deleteFromFavorite, addToFavorite, incrementPage, setPage } =
-  campersSlice.actions;
+export const {
+  deleteFromFavorite,
+  addToFavorite,
+  incrementPage,
+  setPage,
+  setFilters,
+  resetPage,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
