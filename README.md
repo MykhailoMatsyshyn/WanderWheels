@@ -9,10 +9,8 @@
 
 <hr style="border: none; border-top: 2px solid #E2E2E0;">
 
-<video width="600" controls>
-  <source src="./public/video.mp4" type="video/mp4">
-</video>
+<video src="./public/video.mp4"  width="600">
 
 <h2 style="text-align: center; color: #E2E2E0; font: 30px Raleway;">How to use</h2>
 
-https://github.com/MykhailoMatsyshyn/WanderWheels/blob/main/public/video.mp4
+<video src="https://user-images.githubusercontent.com/126239/151127893-5c98ba8d-c431-4a25-bb1f-e0b33645a2b6.mp4"></video>
