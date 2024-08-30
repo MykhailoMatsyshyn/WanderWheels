@@ -14,3 +14,5 @@
 </video>
 
 <h2 style="text-align: center; color: #E2E2E0; font: 30px Raleway;">How to use</h2>
+
+https://github.com/MykhailoMatsyshyn/WanderWheels/blob/main/public/video.mp4
