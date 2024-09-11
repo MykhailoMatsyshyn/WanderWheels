@@ -9,8 +9,4 @@
 
 <hr style="border: none; border-top: 2px solid #E2E2E0;">
 
-<video src="./public/video.mp4"  width="600">
-
-<h2 style="text-align: center; color: #E2E2E0; font: 30px Raleway;">How to use</h2>
-
-<video src="https://user-images.githubusercontent.com/126239/151127893-5c98ba8d-c431-4a25-bb1f-e0b33645a2b6.mp4"></video>
+https://github.com/user-attachments/assets/38676cbf-64d6-49bd-8a1c-a6f8fbf13a6f
